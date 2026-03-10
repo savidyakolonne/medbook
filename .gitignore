@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Env files
+.env
+.env.*
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# Build outputs (if any generated at root)
+dist/
+build/
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Node modules if ever installed at root
+node_modules/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
