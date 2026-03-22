@@ -1,8 +1,8 @@
-const bcrypt = require("bcrypt");
-const pool = require("../config/db");
-const generateToken = require("../utils/generateToken");
+import bcrypt from "bcrypt";
+import pool from "../config/db.js";
+import generateToken from "../utils/generateToken.js";
 
-const registerPatient = async (req, res) => {
+export const registerPatient = async (req, res) => {
   try {
     const { full_name, email, password, phone } = req.body;
 
@@ -23,8 +23,7 @@ const registerPatient = async (req, res) => {
       });
     }
 
-    const saltRounds = 10;
-    const password_hash = await bcrypt.hash(password, saltRounds);
+    const password_hash = await bcrypt.hash(password, 10);
 
     const result = await pool.query(
       `INSERT INTO patients (full_name, email, password_hash, phone)
@@ -36,20 +35,20 @@ const registerPatient = async (req, res) => {
     const user = result.rows[0];
     const token = generateToken(user);
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "Patient registered successfully",
       user,
       token,
     });
   } catch (error) {
     console.error("Register error:", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error during registration",
     });
   }
 };
 
-const loginPatient = async (req, res) => {
+export const loginPatient = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -71,7 +70,6 @@ const loginPatient = async (req, res) => {
     }
 
     const user = result.rows[0];
-
     const isMatch = await bcrypt.compare(password, user.password_hash);
 
     if (!isMatch) {
@@ -82,7 +80,7 @@ const loginPatient = async (req, res) => {
 
     const token = generateToken(user);
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "Login successful",
       user: {
         id: user.id,
@@ -95,13 +93,13 @@ const loginPatient = async (req, res) => {
     });
   } catch (error) {
     console.error("Login error:", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error during login",
     });
   }
 };
 
-const getProfile = async (req, res) => {
+export const getProfile = async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT id, full_name, email, phone, role, created_at
@@ -116,17 +114,11 @@ const getProfile = async (req, res) => {
       });
     }
 
-    res.status(200).json(result.rows[0]);
+    return res.status(200).json(result.rows[0]);
   } catch (error) {
     console.error("Profile error:", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error while fetching profile",
     });
   }
-};
-
-module.exports = {
-  registerPatient,
-  loginPatient,
-  getProfile,
 };
