@@ -1,16 +1,24 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-const authRoutes = require("./routes/authRoutes.js")
+import authRoutes from "./routes/authRoutes.js";
+import doctorRoutes from "./routes/doctorRoutes.js";
+import appointmentRoutes from "./routes/appointmentRoutes.js";
+
+dotenv.config();
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("MedBook is running");
+  res.send("MediBook API is running");
 });
 
-app.use("/api/auth", authRoutes) ; 
+app.use("/api/auth", authRoutes);
+app.use("/api/doctors", doctorRoutes);
+app.use("/api/appointments", appointmentRoutes);
 
-module.exports = app;
+export default app;
