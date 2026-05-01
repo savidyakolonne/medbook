@@ -6,6 +6,10 @@ Built using **n8n**, WhatsApp API, and the MedBook backend.
 
 ---
 
+<p align="center">
+  <img src="/docs/readmebannermedbook.png" width="600"/>
+</p>
+
 ## 🚀 Features
 
 * 📲 Book appointments via WhatsApp chat
