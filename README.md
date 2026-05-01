@@ -1,106 +1,224 @@
-MedBook
+# 💬 MedBook Booking System
 
-MedBook is a full-stack healthcare management platform designed to medical service management.
+This module integrates WhatsApp messaging with MedBook using workflow automation to enable real-time appointment booking via chat.
 
-🚀 Features
+Built using **n8n**, WhatsApp API, and the MedBook backend.
 
+---
 
-🏗️ Project Structure
-MedBook
-│
-├── client/          
-├── server/         
-├── docs/           
-│   └── 
-│
-├── docker-compose.yml
-├── .gitignore
-└── README.md
+## 🚀 Features
 
-🖼️ Project Screenshots
-Landing Page
+* 📲 Book appointments via WhatsApp chat
+* 🤖 Automated conversation flow (chatbot style)
+* 🔄 Real-time communication with backend API
+* 🧠 User state management (multi-step flow)
+* 📅 Doctor, date, and time selection
+* ✅ Instant booking confirmation
 
+---
 
+## 🧠 System Architecture
 
+```
+WhatsApp User
+     ↓
+WhatsApp API (Twilio / Meta)
+     ↓
+n8n (Workflow Automation)
+     ↓
+MedBook Backend (Express API)
+     ↓
+PostgreSQL Database
+```
 
-Dashboard
+---
 
+## ⚙️ Tech Stack
 
+### Automation
 
+* n8n
 
-Appointment Booking
+### Messaging
 
+* WhatsApp Cloud API (Meta) or Twilio
 
+### Backend Integration
 
+* Node.js (Express.js)
 
-Place these images inside the docs folder like:
+### Database
 
-docs/
- ├ landing-page.png
- ├ dashboard.png
- └ appointment-booking.png
-⚙️ Tech Stack
+* PostgreSQL
 
-Frontend
+---
 
-Nextjs
+## 🔁 Workflow Overview
 
-TailwindCSS / CSS
+1. User sends a message on WhatsApp
+2. Webhook receives message in n8n
+3. n8n identifies user intent (booking)
+4. Bot asks for required details:
 
-Axios
+   * Doctor
+   * Date
+   * Time
+5. User responses are stored (state management)
+6. n8n sends booking request to backend API
+7. Backend saves appointment
+8. Confirmation message sent to user
 
-Backend
+---
 
-Node.js
+## 🧩 n8n Workflow Structure
 
-Express.js
+* **Webhook Node** → Receives incoming WhatsApp messages
+* **Function Node** → Parses message & detects intent
+* **Switch Node** → Controls conversation flow
+* **Database/API Node** → Stores user state
+* **HTTP Request Node** → Calls MedBook backend
+* **Response Node** → Sends reply back to WhatsApp
 
-Database
+---
 
-PostgreSQL (depending on your setup)
+## 🛠️ Setup Guide
 
-DevOps
+### 1. Start n8n
 
-Docker
+```bash
+docker run -it --rm \
+  -p 5678:5678 \
+  n8nio/n8n
+```
 
-Docker Compose
+Access:
 
-🛠️ Installation
+```
+http://localhost:5678
+```
 
-Clone the repository:
+---
 
-git clone https://github.com/savidyakolonne/medbook.git
-cd medbook
-Run with Docker
-docker-compose up --build
-Run manually
+### 2. Configure WhatsApp API
 
-Client
+#### Option A: Twilio (Recommended for testing)
 
-cd client
-npm install
-npm run dev
+* Create Twilio account
+* Enable WhatsApp Sandbox
+* Set webhook URL to your n8n webhook
 
-Server
+#### Option B: Meta WhatsApp Cloud API
 
-cd server
-npm install
-npm run dev
-📄 Environment Variables
+* Create Meta Developer App
+* Configure Webhooks
+* Connect phone number
 
-Create a .env file in the server folder:
+---
 
-PORT=5000
-DATABASE_URL=your_database_url
-JWT_SECRET=your_secret_key
-📚 Documentation
+### 3. Create Webhook in n8n
 
-📜 License
+* Add **Webhook Node**
+* Set method: `POST`
+* Copy webhook URL → paste into WhatsApp API config
 
-This project is licensed under the MIT License.
+---
 
-👨‍💻 Author
+### 4. Connect Backend API
 
-Developed by Savidya Kolonne
+Example endpoint:
 
-Software Engineering Undergraduate
+```
+POST /api/appointments
+```
+
+Example request:
+
+```json
+{
+  "userId": "947xxxx",
+  "doctor": "Dr Silva",
+  "date": "2026-05-02",
+  "time": "10:00"
+}
+```
+
+---
+
+## 🧠 State Management
+
+To handle multi-step conversations, store user progress:
+
+Example:
+
+```json
+{
+  "userId": "947xxxx",
+  "step": "SELECT_TIME",
+  "doctor": "Dr Silva",
+  "date": "2026-05-02"
+}
+```
+
+You can store this in:
+
+* PostgreSQL
+* Redis
+* Your backend API
+
+---
+
+## 📄 Environment Variables
+
+Example for n8n:
+
+```env
+N8N_PORT=5678
+DB_TYPE=postgresdb
+DB_POSTGRESDB_DATABASE=medbook
+DB_POSTGRESDB_HOST=localhost
+DB_POSTGRESDB_PORT=5432
+DB_POSTGRESDB_USER=postgres
+DB_POSTGRESDB_PASSWORD=password
+```
+
+---
+
+## 📸 Example Conversation
+
+```
+User: I want to book an appointment
+
+Bot: Which doctor would you like?
+
+User: Dr Silva
+
+Bot: Select a date
+
+User: Tomorrow
+
+Bot: Choose a time
+
+User: 10 AM
+
+Bot: ✅ Your appointment is confirmed!
+```
+
+---
+
+## 🔐 Notes
+
+* Ensure webhook URLs are publicly accessible (use ngrok for local testing)
+* Validate user inputs before sending to backend
+* Handle edge cases (invalid date/time, doctor unavailable)
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+## 👨‍💻 Author
+
+**Savidya Kolonne**
