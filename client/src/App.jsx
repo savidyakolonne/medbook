@@ -8,6 +8,7 @@ import Doctors from "./pages/Doctors";
 import DoctorDetails from "./pages/DoctorDetails";
 import MyAppointments from "./pages/MyAppointments";
 import NotFound from "./pages/NotFound";
+import VerifyEmail from "./pages/VerifyEmail";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           }
         />
         <Route path="*" element={<NotFound />} />
+        <Route path="/verify-email" element={<VerifyEmail/>} />
       </Routes>
     </div>
   );
