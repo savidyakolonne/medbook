@@ -1,4 +1,4 @@
-# 💬 MedBook WhatsApp Booking System
+# 💬 MedBook Booking System
 
 This module integrates WhatsApp messaging with MedBook using workflow automation to enable real-time appointment booking via chat.
 
