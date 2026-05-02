@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import logo from "/logo.png"
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -11,10 +12,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-slate-900 text-white shadow">
+    <nav className="px-32">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link to="/" className="text-xl font-bold">
-          MedBook
+        <Link to="/">
+          <img src={logo} alt="logo" width={130}/>
         </Link>
 
         <div className="flex items-center gap-4">
@@ -22,7 +23,16 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/doctors" className="hover:text-cyan-300">
-            Doctors
+            Service
+          </Link>
+          <Link to="/doctors" className="hover:text-cyan-300">
+            About
+          </Link>
+          <Link to="/doctors" className="hover:text-cyan-300">
+            Contact
+          </Link>
+          <Link to="/doctors" className="hover:text-cyan-300">
+            <img src="" alt="" />
           </Link>
 
           {user ? (
