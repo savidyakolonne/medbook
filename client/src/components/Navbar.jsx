@@ -23,7 +23,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/doctors" className="hover:text-cyan-300">
-            Service
+            Services
           </Link>
           <Link to="/doctors" className="hover:text-cyan-300">
             About
@@ -54,7 +54,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/register"
-                className="rounded bg-cyan-500 px-3 py-1 hover:bg-cyan-600"
+                className="rounded bg-[#69A9EA] px-3 py-1 hover:bg-cyan-600 text-white"
               >
                 Register
               </Link>
