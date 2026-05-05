@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import HeroSection from "./HeroSection";
-import FindDoctorSection from "./FindDoctorSection";
-import ServiceSection from "./ServiceSection";
+import HeroSection from "../components/HeroSection";
+import FindDoctorSection from "../components/FindDoctorSection";
+import ServiceSection from "../components/ServiceSection";
 
 const Home = () => {
   return (
