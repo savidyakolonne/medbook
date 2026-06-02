@@ -36,6 +36,10 @@ const FindDoctorSection = () => {
                     doctor1
                 </div>
             </div>
+
+            <div className="">
+                Doctors
+            </div>
         
         </div>
     )

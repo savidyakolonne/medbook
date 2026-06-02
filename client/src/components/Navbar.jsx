@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import logo from "/logo.png"
+import Services from "../pages/Services";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -22,10 +23,10 @@ const Navbar = () => {
           <Link to="/" className="hover:text-cyan-300">
             Home
           </Link>
-          <Link to="/doctors" className="hover:text-cyan-300">
+          <Link to="/services" className="hover:text-cyan-300">
             Services
           </Link>
-          <Link to="/doctors" className="hover:text-cyan-300">
+          <Link to="/about" className="hover:text-cyan-300">
             About
           </Link>
           <Link to="/doctors" className="hover:text-cyan-300">

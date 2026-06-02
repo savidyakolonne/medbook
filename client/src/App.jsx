@@ -4,11 +4,14 @@ import ProtectedRoute from "./components/ProtentedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Doctors from "./pages/Doctors";
-import DoctorDetails from "./pages/DoctorDetails";
+import Doctors from "./components/Doctors";
+import DoctorDetails from "./components/DoctorDetails";
 import MyAppointments from "./pages/MyAppointments";
 import NotFound from "./pages/NotFound";
 import VerifyEmail from "./pages/VerifyEmail";
+import Footer from "./components/Footer";
+import Services from "./pages/Services";
+import About from "./pages/About";
 
 const App = () => {
   return (
@@ -34,10 +37,14 @@ const App = () => {
             />
             <Route path="*" element={<NotFound />} />
             <Route path="/verify-email" element={<VerifyEmail/>} />
+            <Route path="/services" element={<Services/>}/>
+            <Route path="/about" element={<About/>}/>
           </Routes>
         </div>
       
       </div>
+
+      <Footer/>
     </div>
   );
 };

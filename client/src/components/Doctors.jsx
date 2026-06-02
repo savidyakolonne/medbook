@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import DoctorCard from "../components/DoctorCard";
+import DoctorCard from "./DoctorCard";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
