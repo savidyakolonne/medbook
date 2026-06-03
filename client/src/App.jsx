@@ -4,20 +4,24 @@ import ProtectedRoute from "./components/ProtentedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Doctors from "./pages/Doctors";
-import DoctorDetails from "./pages/DoctorDetails";
+import Doctors from "./components/Doctors";
+import DoctorDetails from "./components/DoctorDetails";
 import MyAppointments from "./pages/MyAppointments";
 import NotFound from "./pages/NotFound";
 import VerifyEmail from "./pages/VerifyEmail";
+import Footer from "./components/Footer";
+import Services from "./pages/Services";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import DoctorConsultant from "./pages/servicespages/DoctorConsultant.jsx";
 
 const App = () => {
   return (
     <div className="min-h-screen bg-[#F8F8F8]">
-    <Navbar />
+      <Navbar />
 
-      <div className="flex items-center justify-center">
-        <div className="bg-[#69A9EA] w-full max-w-6xl p-8 rounded-4xl h-full">
-      
+      <div className="flex items-center justify-center px-3 md:px-0">
+        <div className="bg-[#69A9EA] w-full max-w-6xl p-4 md:p-8 rounded-4xl h-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -33,11 +37,19 @@ const App = () => {
               }
             />
             <Route path="*" element={<NotFound />} />
-            <Route path="/verify-email" element={<VerifyEmail/>} />
+            <Route path="/verify-email" element={<VerifyEmail />} />
+            <Route path="/services" element={<Services />} />
+            <Route
+              path="/services/doctor-consulatations"
+              element={<DoctorConsultant />}
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
-      
       </div>
+
+      <Footer />
     </div>
   );
 };

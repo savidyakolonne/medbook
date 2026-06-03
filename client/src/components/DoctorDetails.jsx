@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AppointmentForm from "../components/AppointmentForm";
+import AppointmentForm from "./AppointmentForm";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 
