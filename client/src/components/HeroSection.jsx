@@ -35,17 +35,17 @@ const HeroSection = () => {
       variants={container}
       initial="hidden"
       animate="show"
-      className="bg-[#69A9EA] rounded-3xl px-10 py-12 flex items-center justify-between"
+      className="bg-[#69A9EA] rounded-3xl px-6 md:px-10 py-10 md:py-12 flex flex-col md:flex-row items-center justify-between gap-10"
     >
       {/* LEFT SIDE */}
       <motion.div
         variants={container}
-        className="text-white flex flex-col gap-10"
+        className="text-white flex flex-col gap-8 md:gap-10 text-center md:text-left"
       >
         {/* Heading */}
         <motion.h1
           variants={fadeLeft}
-          className="text-7xl font-semibold max-w-full"
+          className="text-4xl sm:text-5xl md:text-7xl font-semibold leading-tight"
         >
           Your health, <br />
           <span className="whitespace-nowrap">our first priority</span>
@@ -54,21 +54,24 @@ const HeroSection = () => {
         {/* Subtitle row */}
         <motion.div
           variants={fadeLeft}
-          className="flex items-center gap-4"
+          className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start"
         >
-          <img src={generalCheckIcon} alt="icon" className="h-20" />
-          <p className="text-2xl opacity-90 max-w-sm">
+          <img src={generalCheckIcon} alt="icon" className="h-16 md:h-20" />
+          <p className="text-lg md:text-2xl opacity-90 max-w-sm">
             “Simple checkups to keep you healthy and worry free”
           </p>
         </motion.div>
 
         {/* Buttons */}
-        <motion.div variants={fadeUp} className="flex gap-4">
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+        >
           <Link to="/appointments">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB]"
+              className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB] w-full sm:w-auto"
             >
               Quick Appointment
             </motion.button>
@@ -78,7 +81,7 @@ const HeroSection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB]"
+              className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB] w-full sm:w-auto"
             >
               Find a Doctor
             </motion.button>
@@ -89,12 +92,12 @@ const HeroSection = () => {
       {/* RIGHT SIDE IMAGE */}
       <motion.div
         variants={fadeRight}
-        className="flex justify-end shrink-0"
+        className="flex justify-center md:justify-end shrink-0"
       >
         <motion.img
           src={doctorImgOne}
           alt="doctor"
-          className="w-[500px] max-w-full object-contain"
+          className="w-[280px] sm:w-[380px] md:w-[500px] max-w-full object-contain"
           animate={{ y: [0, -10, 0] }}
           transition={{
             repeat: Infinity,
