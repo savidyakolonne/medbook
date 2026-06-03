@@ -1,5 +1,6 @@
 import doctorImgOne from "../assets/herodoctoronenobgone.png" ; 
 import generalCheckIcon from  "../assets/generalcheckiconhro.png" ; 
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -24,13 +25,17 @@ const HeroSection = () => {
         </div>
 
         <div className="flex gap-4">
-          <button className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB] cursor-pointer">
+          <Link to="/appointments">
+            <button className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB] cursor-pointer">
             Quick Appointment
           </button>
+          </Link>
 
+        <Link to="/doctors">
           <button className="bg-white text-gray-800 px-6 py-4 rounded-2xl text-lg font-medium hover:text-[#F8F8F8] hover:bg-[#641FEB] cursor-pointer">
             Find a Doctor
           </button>
+        </Link>
         </div>
 
       </div>

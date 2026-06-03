@@ -12,6 +12,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Footer from "./components/Footer";
 import Services from "./pages/Services";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -39,6 +40,8 @@ const App = () => {
             <Route path="/verify-email" element={<VerifyEmail/>} />
             <Route path="/services" element={<Services/>}/>
             <Route path="/about" element={<About/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+
           </Routes>
         </div>
       
