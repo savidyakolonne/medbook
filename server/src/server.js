@@ -1,21 +1,39 @@
 import app from "./app.js";
-import pool from "./config/db.js";
+import { config } from "dotenv";
+import { connectDB, disconnectDB } from "./config/db.js";
 
-const PORT = process.env.PORT || 5000;
+config();
+connectDB(); 
 
-const startServer = async () => {
-  try {
-    const result = await pool.query("SELECT current_database(), now()");
-    console.log("Database connected successfully");
-    console.log(result.rows[0]);
+const PORT = 5001;
 
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  } catch (error) {
-    console.error("Failed to connect to database:", error.message);
-    process.exit(1);
-  }
-};
+app.listen(PORT, () => {
+  console.log(`Server running on PORT ${PORT}`)
+});
 
-startServer();
+//handle unhandled promise rejections
+process.on("unhandledRejection", async(err) => {
+  console.log("Unhandled Rejection:", err);
+  server.close(async () => {
+    await disconnectDB();
+    process.exit(1); 
+  });
+});
+
+// handle uncaught exceptions
+process.on("uncaughtException", async(err) => {
+  console.log("Uncaught Exception Rejection:", err);
+  server.close(async () => {
+    await disconnectDB();
+    process.exit(1); 
+  });
+});
+
+// gracefull shutdown
+process.on("SIGTERM", async() => {
+  console.log("SIGTERM recevied, shutting down gracefully");
+  server.close(async () => {
+    await disconnectDB();
+    process.exit(1); 
+  });
+});
