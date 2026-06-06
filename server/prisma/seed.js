@@ -15,7 +15,7 @@ try {
     ALTER TABLE "Appointment" ADD CONSTRAINT "Appointment_doctor_id_fkey" 
     FOREIGN KEY ("doctor_id") REFERENCES "Doctor"("id") ON DELETE RESTRICT ON UPDATE CASCADE
   `);
-  console.log('✅ Fixed Appointment FK constraint');
+  console.log('Fixed Appointment FK constraint');
 } catch (e) {
   console.error('FK fix error:', e.message);
 }

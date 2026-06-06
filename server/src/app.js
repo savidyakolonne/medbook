@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import authRoutes from './routes/authRoute.js';
-import doctorsRoutes from './routes/doctorsRoute.js';
-import appointmentsRoutes from './routes/appointmentsRoute.js';
+import doctorRoutes from './routes/doctorRoute.js';
+import appointmentRoutes from './routes/appointmentRoute.js';
 
 const app = express();
 
@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Routes
 app.use('/auth', authRoutes);
-app.use('/doctors', doctorsRoutes);
-app.use('/appointments', appointmentsRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api/appointments', appointmentRoutes);
 
 // Health check
 app.get('/', (req, res) => {

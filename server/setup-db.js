@@ -59,12 +59,12 @@ try {
     if (cleaned) {
       console.log('Executing:', cleaned.substring(0, 60) + '...');
       await prisma.$executeRawUnsafe(cleaned);
-      console.log('✅ Done');
+      console.log('Done');
     }
   }
-  console.log('\n🎉 All tables created successfully!');
+  console.log('\nAll tables created successfully!');
 } catch (e) {
-  console.error('❌ Error:', e.message);
+  console.error('Error:', e.message);
 } finally {
   await prisma.$disconnect();
   process.exit(0);
