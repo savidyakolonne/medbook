@@ -165,9 +165,12 @@ const FindDoctorSection = () => {
       {/* BUTTON */}
       <div className="flex justify-center mt-8 md:mt-10">
         <Link to="/doctors">
-          <button className="group px-6 md:px-8 py-2.5 bg-indigo-600 rounded-lg text-white cursor-pointer active:scale-95 transition duration-300 hover:bg-indigo-700 text-sm md:text-base">
-            See All Doctors
-          </button>
+          <button className="group px-8 py-2.5 bg-indigo-600 rounded-lg text-white cursor-pointer active:scale-95 transition duration-300 hover:bg-indigo-700">
+            <p className="relative h-6 overflow-hidden">
+                <span className="block transition-transform duration-300 group-hover:-translate-y-full">See All Doctors</span>
+                <span className="absolute w-full top-full left-1/2 -translate-x-1/2 block transition-transform duration-300 group-hover:translate-y-[-100%]">See All Doctors</span>
+            </p>
+        </button>
         </Link>
       </div>
     </motion.div>
