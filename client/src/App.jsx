@@ -17,7 +17,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import DoctorConsultant from "./pages/servicespages/DoctorConsultant.jsx";
+import DoctorConsultant from "./pages/servicespages/DoctorConsultant";
 
 const App = () => {
   const [showMaintenance, setShowMaintenance] = useState(true);
@@ -26,7 +26,6 @@ const App = () => {
     <div className="min-h-screen bg-[#F8F8F8]">
       <Navbar />
 
-      {/* MAIN CONTENT */}
       <div className="flex items-center justify-center px-3 md:px-0">
         <div className="bg-[#69A9EA] w-full max-w-6xl p-4 md:p-8 rounded-4xl h-full">
           <Routes>
@@ -47,10 +46,12 @@ const App = () => {
 
             <Route path="/verify-email" element={<VerifyEmail />} />
             <Route path="/services" element={<Services />} />
+
             <Route
-              path="/services/doctor-consulatations"
+              path="/services/doctor-consultations"
               element={<DoctorConsultant />}
             />
+
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
 
@@ -60,23 +61,24 @@ const App = () => {
       </div>
 
       <Footer />
-
-      {/* COOKIE CONSENT */}
       <CookieConsent />
 
-      {/* 🚧 FLOATING MAINTENANCE BADGE */}
       {showMaintenance && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-white shadow-2xl rounded-full px-5 py-3 flex items-center gap-3 border border-gray-200">
+          <div className="bg-white shadow-xl rounded-full px-5 py-3 flex items-center gap-3 border border-gray-200">
             <span className="text-lg">🚧</span>
 
-            <p className="text-sm font-medium text-gray-700 whitespace-nowrap">
+            <p className="text-sm font-medium text-gray-700">
               Maintenance in Progress
             </p>
 
             <button
-              onClick={() => setShowMaintenance(false)}
-              className="text-gray-400 hover:text-gray-700 text-lg leading-none"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowMaintenance(false);
+              }}
+              className="text-gray-400 hover:text-gray-700 text-lg"
             >
               ✕
             </button>
