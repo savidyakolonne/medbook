@@ -18,6 +18,7 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import DoctorConsultant from "./pages/servicespages/DoctorConsultant";
+import AdminDashboard from "./pages/admin/adminDashboard";
 
 const App = () => {
   const [showMaintenance, setShowMaintenance] = useState(true);
@@ -54,6 +55,8 @@ const App = () => {
 
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+
+            <Route path="/admin" element={<AdminDashboard/>}/>
 
             <Route path="*" element={<NotFound />} />
           </Routes>
