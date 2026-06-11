@@ -133,7 +133,7 @@ const FindDoctorSection = () => {
               placeholder="Search doctors or specialists"
             />
 
-            <button className="bg-indigo-500 w-24 md:w-28 h-9 rounded-xl text-sm text-white mr-1 hover:bg-indigo-600 transition">
+            <button className="bg-indigo-500 w-24 md:w-28 h-9 rounded-xl text-sm text-white mr-1 hover:bg-indigo-600 transition cursor-pointer">
               Search
             </button>
           </div>

@@ -131,7 +131,7 @@ const ServiceSection = () => {
         />
       </div>
 
-      <div>
+      <div className=" py-10">
         <Link to="/services">
           <button className="group px-8 py-2.5 bg-indigo-600 rounded-lg text-white cursor-pointer active:scale-95 transition duration-300 hover:bg-indigo-700">
             <p className="relative h-6 overflow-hidden">

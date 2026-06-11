@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import HeroSection from "../components/HeroSection";
 import FindDoctorSection from "../components/FindDoctorSection";
 import ServiceSection from "../components/ServiceSection";
+import TestimonialSection from "../components/TestimonialSection";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <HeroSection/>
       <FindDoctorSection/>
       <ServiceSection/>
+      <TestimonialSection/>
     </div>
   );
 };
