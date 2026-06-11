@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 
 import DoctorConsultant from "../src/pages/servicespages/DoctorConsultant"
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminLogin from "./pages/admin/AdminLogin";
 
 const App = () => {
   return (
@@ -38,8 +40,12 @@ const App = () => {
 
       {/* ADMIN ROUTES */}
       <Route path="/admin" element={<AdminLayout />}>
-         
+
+        <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
       </Route>
+
+      {/* admin login */}
+      <Route path="/admin/login" element={<AdminLogin/>}/>
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />

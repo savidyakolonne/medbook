@@ -1,7 +1,9 @@
+import AdminSidebar from "../../components/admin/AdminSidebar";
+
 const AdminDashboard = () => {
     return(
         <>
-            <div>Hello, Admin</div>
+            <AdminSidebar/>
         </>
     )  
 }
