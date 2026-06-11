@@ -2,6 +2,7 @@ import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import CookieConsent from "../src/components/CookieConsent";
 import { Outlet } from "react-router-dom";
+import MaintenanceCard from "../src/components/MaintenanceCard";
 
 const MainLayout = () => {
   return (
@@ -16,6 +17,7 @@ const MainLayout = () => {
 
       <Footer />
       <CookieConsent />
+      <MaintenanceCard/>
     </div>
   );
 };
